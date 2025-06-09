@@ -1,61 +1,57 @@
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background: #f8f9fa;
+  background-color: #e8f4f1;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
+h2 {
+  text-align: center;
+  margin-top: 50px;
+  color: #333;
+}
+
+.code-container {
   display: flex;
-  justify-content: space-between;
-  padding: 40px;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.left, .right {
-  width: 48%;
-}
-
-button.choice {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+.code-container input {
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 6px;
+  border: 1px solid #aaa;
   border-radius: 6px;
-  background-color: white;
-  cursor: pointer;
 }
 
-button.choice:hover {
-  background-color: #e8f4ff;
-}
-
-.button {
-  margin-top: 20px;
-  padding: 10px 20px;
+button {
   background-color: #0077cc;
   color: white;
   border: none;
-  border-radius: 5px;
+  padding: 12px 25px;
   font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+.instructions {
+  text-align: center;
+  margin-top: 20px;
+  color: #555;
 }
 
 .timer {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 8px 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  font-size: 20px;
   font-weight: bold;
-  font-size: 18px;
-}
-
-.footer {
   text-align: center;
-  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
