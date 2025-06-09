@@ -4,225 +4,66 @@
   <meta charset="UTF-8">
   <title>Mock SAT Test</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #cad9cf;
-    }
-    /* Start code screen retains original style */
-    #startScreen {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-    .code-container {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-    }
-    .code-container input {
-      width: 40px;
-      height: 40px;
-      font-size: 24px;
-      text-align: center;
-      margin: 0 5px;
-      border: 1px solid #aaa;
-      border-radius: 4px;
-    }
-    #startScreen button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #0077cc;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .instructions {
-      margin-top: 30px;
-      font-size: 14px;
-      color: #666;
-    }
-    .instructions a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-    /* Test screen styles */
-    #testScreen {
-      display: none;
-      flex-direction: column;
-      height: 100vh;
-      background-color: #ffffff;
-      position: relative;
-    }
-    /* Header with three sections */
-    .test-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 40px;
-      border-bottom: 1px solid #ddd;
-      font-size: 14px;
-      background-color: #fff;
-    }
-    .header-left, .header-center, .header-right {
-      display: flex;
-      align-items: center;
-      flex: 1;
-    }
-    .header-left {
-      justify-content: flex-start;
-    }
-    .header-left .section-title {
-      font-weight: bold;
-    }
-    .header-left .directions {
-      margin-left: 8px;
-      font-size: 12px;
-      cursor: pointer;
-    }
-    .header-center {
-      justify-content: center;
-    }
-    #pauseBtn {
-      background: none;
-      border: 1px solid #aaa;
-      border-radius: 4px;
-      padding: 4px 10px;
-      font-size: 12px;
-      margin-right: 8px;
-      cursor: pointer;
-    }
-    .header-center .timer {
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .header-right {
-      justify-content: flex-end;
-      font-size: 12px;
-    }
-    /* Watermark-color ID ribbon */
-    .colorline-container {
-      height: 3px;
-      width: 100%;
-      background-image: linear-gradient(
-        to right,
-        #dc4534 0% 3.7%, transparent 3.7% 5%,
-        #2baf7d 5% 8.3%, transparent 8.3% 10%,
-        #8925b5 10% 13.3%, transparent 13.3% 15%,
-        #4494e8 15% 18.3%, transparent 18.3% 20%,
-        #f5c542 20% 23.3%, transparent 23.3% 25%,
-        #f27052 25% 28.3%, transparent 28.3% 30%,
-        #dc4534 30% 33.3%, transparent 33.3% 35%,
-        #2baf7d 35% 38.3%, transparent 38.3% 40%,
-        #8925b5 40% 43.3%, transparent 43.3% 45%,
-        #4494e8 45% 48.3%, transparent 48.3% 50%,
-        #f5c542 50% 53.3%, transparent 53.3% 55%,
-        #f27052 55% 58.3%, transparent 58.3% 60%,
-        #dc4534 60% 63.3%, transparent 63.3% 65%,
-        #2baf7d 65% 68.3%, transparent 68.3% 70%,
-        #8925b5 70% 73.3%, transparent 73.3% 75%,
-        #4494e8 75% 78.3%, transparent 78.3% 80%,
-        #f5c542 80% 83.3%, transparent 83.3% 85%,
-        #f27052 85% 88.3%, transparent 88.3% 90%,
-        #dc4534 90% 93.3%, transparent 93.3% 95%,
-        #2baf7d 95% 100%
-      );
-    }
-    /* Body split */
-    .test-body {
-      display: flex;
-      flex: 1;
-      padding: 20px 40px;
-      gap: 40px;
-      overflow-y: auto;
-    }
-    .left-column, .right-column {
-      flex: 1;
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 4px;
-    }
-    /* Question header and options */
-    .question-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    .question-number {
-      width: 24px;
-      height: 24px;
-      background: #000;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      margin-right: 8px;
-    }
-    .mark-review {
-      font-size: 12px;
-    }
-    .options-container {
-      margin-top: 12px;
-    }
-    .option-wrapper {
-      margin-bottom: 12px;
-    }
-    .options-cell {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 12px;
-    }
-    .letters-container {
-      width: 24px;
-      height: 24px;
-      border: 1px solid #ccc;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 12px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-    .option-text {
-      font-size: 14px;
-      line-height: 1.5;
-    }
-    /* Navigation and footer */
-    .nav-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 16px 0;
-      background: none;
-    }
-    .nav-buttons button {
-      background-color: #1a73e8;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      font-size: 14px;
-      padding: 10px 25px;
-      cursor: pointer;
-    }
-    .progress-footer {
-      text-align: center;
-      font-size: 14px;
-      background-color: #000;
-      color: #fff;
-      padding: 8px 0;
-    }
+    /* Base */
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #cad9cf; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Start Screen (unchanged) */
+    #startScreen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+    .code-container { display: flex; justify-content: center; margin: 20px 0; }
+    .code-container input { width: 40px; height: 40px; font-size: 24px; text-align: center; margin: 0 5px; border: 1px solid #aaa; border-radius: 4px; }
+    #startScreen button { padding: 10px 20px; font-size: 16px; background-color: #0077cc; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+    .instructions { margin-top: 30px; font-size: 14px; color: #666; }
+    .instructions a { color: #0077cc; }
+
+    /* Test Screen Container */
+    #testScreen { display: none; background: #fff; flex-direction: column; height: 100vh; }
+
+    /* Header */
+    .test-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; background: #fff; border-bottom: 1px solid #ddd; }
+    .header-left { display: flex; align-items: center; font-size: 16px; font-weight: bold; }
+    .header-left .directions { margin-left: 8px; font-weight: normal; font-size: 14px; cursor: pointer; }
+    .header-center { display: flex; align-items: center; }
+    #pauseBtn { font-size: 14px; padding: 4px 12px; border: 1px solid #888; border-radius: 4px; background: #fff; cursor: pointer; margin-right: 12px; }
+    .timer { font-size: 18px; font-weight: bold; }
+    .header-right { font-size: 14px; }
+
+    /* Color ID Ribbon */
+    .colorline-container { height: 3px; width: 100%; display: flex; }
+    .colorline-container span { flex: 1; height: 3px; }
+
+    /* Body */
+    .test-body { display: flex; flex: 1; }
+    .left-column, .right-column { padding: 24px; }
+    .left-column { width: 50%; font-size: 15px; line-height: 1.6; }
+    .divider { width: 1px; background: #ddd; }
+    .right-column { width: 50%; }
+
+    /* Question Pane */
+    .question-header { display: flex; align-items: center; margin-bottom: 12px; }
+    .question-number { width: 24px; height: 24px; background: #000; color: #fff; font-size: 14px; display: flex; align-items: center; justify-content: center; margin-right: 8px; }
+    .mark-review { font-size: 14px; margin-left: 8px; }
+    .annotation-icon { margin-left: auto; font-size: 16px; cursor: pointer; }
+    .colorline-question { height: 3px; margin: 8px 0 16px; display: flex; }
+    .colorline-question span { flex: 1; height: 3px; }
+
+    /* Options */
+    .options-container { }
+    .option-wrapper { margin-bottom: 12px; }
+    .options-cell { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 4px; padding: 12px; }
+    .letters-container { width: 24px; height: 24px; border: 1px solid #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; margin-right: 12px; }
+    .option-text { font-size: 14px; line-height: 1.5; }
+
+    /* Navigation Buttons */
+    .nav-buttons { display: flex; justify-content: flex-end; gap: 12px; padding: 16px 32px; }
+    .nav-buttons button { background: #1a73e8; color: #fff; border: none; border-radius: 20px; padding: 10px 24px; font-size: 14px; cursor: pointer; }
+
+    /* Footer */
+    .progress-footer { position: absolute; bottom: 0; width: 100%; background: #000; color: #fff; text-align: center; padding: 8px 0; font-size: 14px; }
   </style>
 </head>
 <body>
-  <!-- Start screen unchanged -->
+  <!-- Start code screen -->
   <div id="startScreen">
     <h2>Start Code</h2>
     <p>Enter your start code now to begin testing. Good luck!</p>
@@ -236,11 +77,9 @@
       <input type="text" maxlength="1">
     </div>
     <button onclick="startTest()">Start Test</button>
-    <div class="instructions">
-      <p>You can <a href="#">review the instructions</a> that the proctor reads aloud.</p>
-    </div>
+    <div class="instructions"><p>You can <a href="#">review the instructions</a> that the proctor reads aloud.</p></div>
   </div>
-  <!-- Test screen updated to replicate Bluebook -->
+  <!-- Test screen -->
   <div id="testScreen">
     <div class="test-header">
       <div class="header-left">
@@ -256,12 +95,14 @@
     <div class="colorline-container" id="colorLineTop"></div>
     <div class="test-body">
       <div class="left-column" id="leftColumn">Loading passage...</div>
+      <div class="divider"></div>
       <div class="right-column">
         <div class="question-header">
           <div class="question-number" id="questionNumber">1</div>
           <div class="mark-review"><input type="checkbox"> Mark for Review</div>
+          <div class="annotation-icon">✎</div>
         </div>
-        <div class="colorline-container" id="colorLineQuestion"></div>
+        <div class="colorline-question" id="colorLineQuestion"></div>
         <div class="options-container" id="optionsContainer">Loading question...</div>
       </div>
     </div>
@@ -269,11 +110,8 @@
       <button onclick="prevQuestion()">Back</button>
       <button onclick="nextQuestion()">Next</button>
     </div>
-    <div class="progress-footer">
-      Question <span id="questionNumberFooter">1</span> of <span id="totalQuestions">27</span>
-    </div>
+    <div class="progress-footer">Question <span id="questionNumberFooter">1</span> of <span id="totalQuestions">27</span></div>
   </div>
   <script src="script.js"></script>
 </body>
 </html>
-
