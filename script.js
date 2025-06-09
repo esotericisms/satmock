@@ -3,28 +3,32 @@ let questions = [];
 
 function startTest() {
   document.getElementById("startScreen").style.display = "none";
-  document.getElementById("testScreen").style.display = "block";
+  document.getElementById("testScreen").style.display = "flex";
   startTimer();
+
   fetch("questions.json")
     .then(res => res.json())
     .then(data => {
       questions = data;
+      document.getElementById("totalQuestions").textContent = questions.length;
       showQuestion(currentIndex);
     });
 }
 
 function showQuestion(index) {
   const q = questions[index];
-  const html = `
-    <h3>Section 1, Module 1: Reading and Writing</h3>
-    <p style="margin-bottom: 25px;">${q.passage}</p>
+
+  document.getElementById("questionNumber").textContent = index + 1;
+  document.getElementById("leftColumn").innerHTML = `<p>${q.passage}</p>`;
+  const choicesHTML = q.choices.map((choice, i) =>
+    `<label><input type="radio" name="choice"> ${String.fromCharCode(65 + i)}. ${choice}</label>`
+  ).join("");
+
+  document.getElementById("rightColumn").innerHTML = `
     <p><strong>${q.question}</strong></p>
-    ${q.choices.map((choice, i) =>
-      `<div><label><input type="radio" name="choice"> ${String.fromCharCode(65 + i)}. ${choice}</label></div>`
-    ).join("")}
-    <p style="margin-top: 15px;"><input type="checkbox"> Mark for Review</p>
+    <div class="choices">${choicesHTML}</div>
+    <p style="margin-top: 10px;"><input type="checkbox"> Mark for Review</p>
   `;
-  document.getElementById("questionContainer").innerHTML = html;
 }
 
 function nextQuestion() {
@@ -52,5 +56,6 @@ function startTimer() {
     if (time < 0) clearInterval(interval);
   }, 1000);
 }
+
 
 
