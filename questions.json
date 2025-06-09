@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "section": "Reading and Writing",
+    "passage": "During his career, Cuban composer and pianist Ernesto Lecuona produced hundreds of compositions. Especially impressive is how _____ his body of work is: Lecuona showcased a diverse range of musical talents in different areas, from orchestral pieces and operas to popular film scores.",
+    "question": "Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": ["outdated", "varied", "forgotten", "lonely"]
+  },
+  {
+    "id": 2,
+    "section": "Reading and Writing",
+    "passage": "\"Pops, I'm here!\" I drop my bag and set my guitar case against a wall...",
+    "question": "As used in the text, what does the word 'drop' most nearly mean?",
+    "choices": ["Forget about", "Put down", "Unbolt", "Empty"]
+  },
+  {
+    "id": 3,
+    "section": "Reading and Writing",
+    "passage": "The invertebrates Haywardozoon pactficum and Trophontera mangant have recently been discovered inhabiting the Clarion-Clipperton Zone (CCZ)...",
+    "question": "Which choice completes the text with the most logical and precise word or phrase?",
+    "choices": ["infinitesimal", "verifiable", "tenuous", "inestimable"]
+  }
+]
