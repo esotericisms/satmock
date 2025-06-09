@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mock SAT - Start Code</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="startScreen">
+    <h2>Start Code</h2>
+    <p>Enter your start code now to begin testing. Good luck!<br><strong>The start code contains numbers only.</strong></p>
+    <div class="code-container">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+    </div>
+    <button class="button" onclick="startTest()">Start Test</button>
+  </div>
 
+  <div id="testScreen" style="display:none">
+    <div class="timer" id="timer">31:39</div>
+    <div class="container">
+      <div class="left">
+        <h3>2025年5月国际B卷 Module 2</h3>
+        <p>
+          Postcranial skeletal pneumaticity (PSP) refers to the presence of extensions of an animal's lungs and air sacs inside its bones. Though such structures do not typically fossilize, they are believed to have been present in <i>Tyrannosaurus</i>, <i>Euhelopus</i>, and other Cretaceous theropods and sauropods. To _____ PSP from fossils, researchers look for indicators such as large foramina (holes in bones).
+        </p>
+      </div>
+
+      <div class="right">
+        <div class="question">
+          <p><strong>1</strong> &nbsp; <input type="checkbox"> Mark for Review</p>
+          <p>Which choice completes the text with the most logical and precise word or phrase?</p>
+          <button class="choice">A. infer</button>
+          <button class="choice">B. acquire</button>
+          <button class="choice">C. isolate</button>
+          <button class="choice">D. preserve</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Question 1 of 27</p>
+      <button onclick="prevQuestion()">Back</button>
+      <button onclick="nextQuestion()">Next</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
