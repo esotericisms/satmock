@@ -3,86 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <title>Start Code</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
-      background-color: #e8f4f1;
+      margin: 0;
       font-family: Arial, sans-serif;
+      background-color: #cad9cf;
+    }
+    #startScreen {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
+      text-align: center;
     }
-    h2 {
-      font-weight: normal;
-      color: #333;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 16px;
-      color: #444;
-      margin-bottom: 20px;
+    .top-bar {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      background-color: #e7efe9;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      font-size: 14px;
+      border-bottom: 1px solid #ccc;
     }
     .code-container {
       display: flex;
       justify-content: center;
-      margin-bottom: 20px;
+      margin: 20px 0;
     }
     .code-container input {
-      width: 45px;
-      height: 45px;
-      font-size: 22px;
+      width: 55px;
+      height: 55px;
+      font-size: 28px;
       text-align: center;
-      margin: 0 4px;
-      border: 1px solid #aaa;
-      border-radius: 6px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      margin: 0 8px;
+      border: 2px solid #888;
+      border-radius: 8px;
+      background-color: white;
     }
     button {
-      padding: 10px 25px;
+      padding: 12px 30px;
       font-size: 16px;
-      background-color: #0077cc;
-      color: white;
+      background-color: #fdd835;
+      color: black;
       border: none;
-      border-radius: 6px;
+      border-radius: 20px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      margin-top: 15px;
     }
     button:hover {
-      background-color: #005fa3;
+      background-color: #fbc02d;
     }
     .instructions {
-      margin-top: 25px;
-      font-size: 14px;
-      color: #666;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #444;
     }
     .instructions a {
-      color: #0077cc;
+      color: #3367d6;
       text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <h2>Start Code</h2>
-  <p>Enter your start code now to begin testing. Good luck!<br><strong>The start code contains <u>numbers only</u>.</strong></p>
-
-  <div class="code-container">
-    <input type="text" maxlength="1">
-    <input type="text" maxlength="1">
-    <input type="text" maxlength="1">
-    <input type="text" maxlength="1">
-    <input type="text" maxlength="1">
-    <input type="text" maxlength="1">
-    <input type="text" maxlength="1">
+  <div class="top-bar">
+    <div>❓ Help</div>
+    <div>Return to Home 🏠</div>
   </div>
 
-  <button onclick="startTest()">Start Test</button>
+  <div id="startScreen">
+    <h2>Start Code</h2>
+    <p>Enter your start code now to begin testing. Good luck!</p>
+    <p><strong>The start code contains <u>numbers only</u>.</strong></p>
 
-  <div class="instructions">
-    <p>You can <a href="#">review the instructions</a> that the proctor reads aloud.</p>
+    <div class="code-container">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+    </div>
+
+    <button onclick="startTest()">Start Test</button>
+
+    <div class="instructions">
+      <p>You can <a href="#">review the instructions</a> that the proctor reads aloud.</p>
+    </div>
+  </div>
+
+  <div id="testScreen" style="display: none; padding: 40px;">
+    <div class="timer" id="timer">32:00</div>
+    <div id="questionContainer"></div>
+    <div style="margin-top: 20px;">
+      <button onclick="prevQuestion()">Back</button>
+      <button onclick="nextQuestion()">Next</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
